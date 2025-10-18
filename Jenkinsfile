@@ -11,6 +11,12 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/udit-kalra/WeatherBuzz.git'
             }
         }
+        stage('Prepare') {
+            steps {
+                // Fix permission issue on macOS
+                sh 'chmod +x gradlew'
+            }
+        }
         stage('Build') {
             steps {
                 sh './gradlew clean assembleDebug'
@@ -24,10 +30,10 @@ pipeline {
     }
     post {
         success {
-            echo ':white_check_mark: Build Successful!'
+            echo '✅ Build Successful!'
         }
         failure {
-            echo ':x: Build Failed!'
+            echo '❌ Build Failed!'
         }
     }
 }
