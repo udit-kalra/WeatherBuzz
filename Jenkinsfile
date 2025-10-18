@@ -1,7 +1,11 @@
 pipeline {
     agent any
+
+    tools {
+            jdk ‘jdk17’  // This must match the JDK name you configured in Jenkins Global Tool Configuration
+        }
+
     environment {
-        JAVA_HOME = "/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
         ANDROID_HOME = "/Users/udit/Library/Android/sdk"
         PATH = "$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
     }
