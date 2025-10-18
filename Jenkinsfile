@@ -1,33 +1,33 @@
 pipeline {
     agent any
     environment {
-        JAVA_HOME = “/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home”
-        ANDROID_HOME = “/Users/udit/Library/Android/sdk”
-        PATH = “$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools”
+        JAVA_HOME = "/usr/local/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
+        ANDROID_HOME = "/Users/udit/Library/Android/sdk"
+        PATH = "$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
     }
     stages {
-        stage(‘Checkout’) {
+        stage('Checkout') {
             steps {
-                git branch: ‘main’, url: ‘https://github.com/udit-kalra/xyz.git’
+                git branch: 'main', url: 'https://github.com/udit-kalra/WeatherBuzz.git'
             }
         }
-        stage(‘Build’) {
+        stage('Build') {
             steps {
-                sh ‘./gradlew clean assembleDebug’
+                sh './gradlew clean assembleDebug'
             }
         }
-        stage(‘Test’) {
+        stage('Test') {
             steps {
-                sh ‘./gradlew test’
+                sh './gradlew test'
             }
         }
     }
     post {
         success {
-            echo ‘:white_check_mark: Build Successful!’
+            echo ':white_check_mark: Build Successful!'
         }
         failure {
-            echo ‘:x: Build Failed!’
+            echo ':x: Build Failed!'
         }
     }
 }
