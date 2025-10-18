@@ -6,7 +6,7 @@ pipeline {
         }
 
     environment {
-        ANDROID_HOME = "/Users/udit/Library/Android/sdk"
+        ANDROID_HOME = "/Users/ukalra/Library/Android/sdk"
         PATH = "$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
     }
     stages {
